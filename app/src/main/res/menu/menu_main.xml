@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="sort by popular"
+        android:id="@+id/popular_sort"
+        android:orderInCategory="1"
+        android:showAsAction="collapseActionView" />
+    <item android:title="sort by top rated"
+        android:id="@+id/top_rated_sort"
+        android:orderInCategory="2"
+        android:showAsAction="collapseActionView"/>
+</menu>

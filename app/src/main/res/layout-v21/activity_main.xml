@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
+    android:layout_width="match_parent"
+    android:paddingLeft="10dp"
+    android:layout_height="wrap_content"
+    tools:context="com.lekai.root.popularmovies.MainActivity">
+    <!--<TextView-->
+        <!--android:id="@+id/movies_choice"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textStyle="bold"-->
+        <!--android:paddingStart="20dp"/>-->
+
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/movie_main_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@android:color/tertiary_text_dark"-->
+        <!--android:elevation="4dp"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/each_movie_recyclerview"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+</FrameLayout>
