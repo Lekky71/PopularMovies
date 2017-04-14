@@ -13,12 +13,10 @@ import retrofit2.http.GET;
  */
 
 public interface MovieDBEndpointInterface {
-// http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=28ef9801379c99fb16dc16dc34bf9751
-    @GET("3/movie/popular?api_key=28ef9801379c99fb16dc16dc34bf9751")
+    /*TODO Please,Change the API_Key here*/
+    final String API_KEY = "28ef9801379c99fb16dc16dc34bf9751";
+    @GET("3/movie/popular?api_key="+API_KEY)
     Call<MoviesInfo> getMoviesUsingPopularity();
-    // http://api.themoviedb.org/3/discover/movie/popular&api_key=28ef9801379c99fb16dc16dc34bf9751
-    @GET("3/movie/top_rated?api_key=28ef9801379c99fb16dc16dc34bf9751")
+    @GET("3/movie/top_rated?api_key="+API_KEY)
     Call <MoviesInfo> getMoviesUsingRatings();
 }
-// http://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&api_key=28ef9801379c99fb16dc16dc34bf9751
-// http://api.themoviedb.org/3/movie/popular?api_key=28ef9801379c99fb16dc16dc34bf9751

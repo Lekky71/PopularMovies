@@ -81,7 +81,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdap
 //                .resize(600,700)
                 .fit()
 //                .centerCrop()
-                .placeholder(R.color.colorAccent)
+                .placeholder(R.color.colorBlack)
                 .into(holder.movieImage);
 //        Toast.makeText(context, movies.get(position).getPosterPath(),Toast.LENGTH_LONG).show();
         holder.movieImage.setOnClickListener(new View.OnClickListener() {

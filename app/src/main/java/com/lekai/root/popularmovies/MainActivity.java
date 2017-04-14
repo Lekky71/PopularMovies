@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<MoviesInfo> call, Throwable t) {
                 String TAG = "failed to connect";
                 Log.e(TAG, t.getMessage());
-                Toast.makeText(getBaseContext(), "An error occured: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "An error occured, Check your internet connection", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<MoviesInfo> call, Throwable t) {
                 String TAG = "failed to connect";
                 Log.e(TAG, t.getMessage());
-                Toast.makeText(getBaseContext(), "An error occured: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "An error occured, Check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
