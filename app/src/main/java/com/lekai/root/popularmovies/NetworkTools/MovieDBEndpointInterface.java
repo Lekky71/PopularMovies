@@ -14,7 +14,7 @@ import retrofit2.http.GET;
 
 public interface MovieDBEndpointInterface {
     /*TODO Please,Change the API_Key here*/
-    final String API_KEY = "28ef9801379c99fb16dc16dc34bf9751";
+    final String API_KEY = "";
     @GET("3/movie/popular?api_key="+API_KEY)
     Call<MoviesInfo> getMoviesUsingPopularity();
     @GET("3/movie/top_rated?api_key="+API_KEY)
