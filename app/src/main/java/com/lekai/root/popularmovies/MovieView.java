@@ -1,10 +1,10 @@
 package com.lekai.root.popularmovies;
+
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 /**
  * Created by root on 4/13/17.
  */

@@ -1,19 +1,16 @@
 package com.lekai.root.popularmovies;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lekai.root.popularmovies.NetworkTools.MovieDBEndpointInterface;
@@ -47,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         mLayoutManager.setAutoMeasureEnabled(true);
         movies = new ArrayList<Movie>();
-//        choice = (TextView) findViewById(R.id.movies_choice);
-//        choice.setText(" Showing movies by popular");
         getMoviesPopularity();
         if(savedInstanceState!=null){
             movies = savedInstanceState.getParcelableArrayList("result");
@@ -73,11 +68,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if(itemId == R.id.popular_sort){
-//            choice.setText(" Showing movies by popular");
             getMoviesPopularity();
         }
         if(itemId==R.id.top_rated_sort){
-//            choice.setText(" Showing movies by top ratings");
 
             getMoviesUsingRatings();
         }

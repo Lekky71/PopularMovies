@@ -1,9 +1,6 @@
 package com.lekai.root.popularmovies.NetworkTools;
 
-import com.lekai.root.popularmovies.movie.Movie;
 import com.lekai.root.popularmovies.movie.MoviesInfo;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

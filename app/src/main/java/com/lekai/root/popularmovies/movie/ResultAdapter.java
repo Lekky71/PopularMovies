@@ -2,27 +2,17 @@ package com.lekai.root.popularmovies.movie;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.lekai.root.popularmovies.MainActivity;
 import com.lekai.root.popularmovies.MovieActivity;
 import com.lekai.root.popularmovies.R;
 import com.squareup.picasso.Picasso;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -30,7 +20,6 @@ import java.util.List;
  */
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdapterViewHolder>{
-    String [] imagesUrl ;
     Context context ;
     private static ArrayList<Movie> movies ;
     public ResultAdapter(ArrayList<Movie> myMovie,Context myContext){
@@ -55,35 +44,13 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdap
         return new ResultAdapterViewHolder(view);
     }
 
-
-//    private URL getImageUrl(String imageUrl) {
-//        Uri.Builder builder = new Uri.Builder();
-//        String BASE_URL = "http://image.tmdb.org/t/p/";
-//        Uri uri = builder.path(BASE_URL)
-//                .appendPath("w185")
-//                .appendPath(imageUrl)
-//                .build();
-//        URL url = null ;
-//        try{
-//            url = new URL(uri.toString());
-//        }
-//        catch (MalformedURLException me){
-//            me.printStackTrace();
-//        }
-//        return url ;
-//    }
-
     @Override
     public void onBindViewHolder(final ResultAdapterViewHolder holder, final int position) {
-//        URL imageUrl = getImageUrl(movies.get(position).getPosterPath());
             final String imageUrl = "http://image.tmdb.org/t/p/w185/"+movies.get(position).getPosterPath();
         Picasso.with(context).load(imageUrl)
-//                .resize(600,700)
                 .fit()
-//                .centerCrop()
                 .placeholder(R.color.colorBlack)
                 .into(holder.movieImage);
-//        Toast.makeText(context, movies.get(position).getPosterPath(),Toast.LENGTH_LONG).show();
         holder.movieImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,14 +64,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdap
             }
         });
     }
-
-
     @Override
     public int getItemCount() {
         return movies.size();
     }
-
-
-
 
 }
