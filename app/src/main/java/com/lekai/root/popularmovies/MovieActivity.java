@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -181,10 +182,33 @@ public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabS
         outState.putParcelableArrayList("videos",myVideos);
         outState.putParcelableArrayList("reviews",myReviews);
     }
-
+    public void showOption(View v){
+        if(v == overview){
+            videoRecyclerView.setVisibility(View.INVISIBLE);
+            reviewRecyclerView.setVisibility(View.INVISIBLE);
+        }else if(v == videoRecyclerView){
+            overview.setVisibility(View.INVISIBLE);
+            reviewRecyclerView.setVisibility(View.INVISIBLE);
+        }else if(v == reviewRecyclerView){
+            videoRecyclerView.setVisibility(View.INVISIBLE);
+            overview.setVisibility(View.INVISIBLE);
+        }
+    }
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-
+        String postionText = tab.getText().toString();
+        switch(postionText){
+            case "Overview":
+                showOption(overview);
+                break;
+            case "Trailer":
+                showOption(videoRecyclerView);
+                break;
+            case "Reviews":
+                showOption(reviewRecyclerView);
+                break;
+            default:
+        }
     }
 
     @Override

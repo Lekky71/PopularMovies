@@ -13,5 +13,7 @@ public class FavoritesContract {
         public static final String COLUMN_MOVIE_ID = "movieId";
         public static final String MOVIE_TITLE = "title";
         public static final String MOVIE_RATING = "rating";
+        public static final String MOVIE_DATE = "date";
+        public static final String MOVIE_OVERVIEW= "overview";
     }
 }

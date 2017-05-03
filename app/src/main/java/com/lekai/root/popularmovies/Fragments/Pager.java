@@ -18,19 +18,7 @@ public class Pager extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                OverviewTab tab1 = new OverviewTab();
-                return tab1;
-            case 1:
-                TrailerTab tab2 = new TrailerTab();
-                return tab2;
-            case 2:
-                ReviewTab tab3 = new ReviewTab();
-                return tab3;
-            default:
-                return null;
-        }
+        return null;
     }
 
     @Override
