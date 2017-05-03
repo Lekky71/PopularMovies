@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.support.v7.widget.RecyclerView.Adapter;
 
-public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+public class MovieActivity extends AppCompatActivity  {
     TextView title ;
     ImageView image ;
     TextView overview;
@@ -52,7 +51,7 @@ public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabS
     Adapter reviewAdapter;
     RecyclerView reviewRecyclerView;
     LinearLayoutManager reviewlinearLayoutManager;
-    TabLayout tabLayout;
+    Toolbar toolbar;
     ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +63,7 @@ public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabS
         overview =(TextView) findViewById(R.id.movie_plot);
         userRating = (TextView) findViewById(R.id.movie_rating);
         date = (TextView) findViewById(R.id.movie_date);
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Overview"));
-        tabLayout.addTab(tabLayout.newTab().setText("Trailer"));
-        tabLayout.addTab(tabLayout.newTab().setText("Review"));
+        toolbar = (Toolbar) findViewById(R.id.tabLayout);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         Intent receiveIntent = getIntent();
@@ -113,6 +109,7 @@ public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabS
 
 
     }
+
 
     private void getEveryVideo(String word){
 
@@ -182,42 +179,5 @@ public class MovieActivity extends AppCompatActivity implements TabLayout.OnTabS
         outState.putParcelableArrayList("videos",myVideos);
         outState.putParcelableArrayList("reviews",myReviews);
     }
-    public void showOption(View v){
-        if(v == overview){
-            videoRecyclerView.setVisibility(View.INVISIBLE);
-            reviewRecyclerView.setVisibility(View.INVISIBLE);
-        }else if(v == videoRecyclerView){
-            overview.setVisibility(View.INVISIBLE);
-            reviewRecyclerView.setVisibility(View.INVISIBLE);
-        }else if(v == reviewRecyclerView){
-            videoRecyclerView.setVisibility(View.INVISIBLE);
-            overview.setVisibility(View.INVISIBLE);
-        }
-    }
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        String postionText = tab.getText().toString();
-        switch(postionText){
-            case "Overview":
-                showOption(overview);
-                break;
-            case "Trailer":
-                showOption(videoRecyclerView);
-                break;
-            case "Reviews":
-                showOption(reviewRecyclerView);
-                break;
-            default:
-        }
-    }
 
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
-    }
 }

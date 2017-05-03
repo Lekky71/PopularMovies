@@ -38,6 +38,5 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP IF TABLE EXISTS "+FavoritesEntry.TABLE_NAME);
         onCreate(db);
-
     }
 }
