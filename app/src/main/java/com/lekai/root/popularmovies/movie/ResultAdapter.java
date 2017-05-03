@@ -37,7 +37,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdap
     }
 
     @Override
-    public ResultAdapter.ResultAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ResultAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.movie_view,parent,false);
@@ -60,6 +60,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultAdap
                 intent.putExtra("plot",movies.get(position).getOverview());
                 intent.putExtra("ratings",movies.get(position).getVoteAverage().toString() );
                 intent.putExtra("releaseDate",movies.get(position).getReleaseDate());
+                intent.putExtra("video_boolean",movies.get(position).getVideo());
+                intent.putExtra("movie_id",movies.get(position).getId().toString());
                 context.startActivity(intent);
             }
         });

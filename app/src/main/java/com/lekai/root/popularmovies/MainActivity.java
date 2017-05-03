@@ -1,5 +1,6 @@
 package com.lekai.root.popularmovies;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -32,15 +33,20 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView ;
     RecyclerView.LayoutManager mLayoutManager;
     ResultAdapter mAdapter;
+    int orientation ;
+    int cells = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.each_movie_recyclerview);
-
+        orientation = this.getResources().getConfiguration().orientation;
         recyclerView.setHasFixedSize(true);
-        mLayoutManager = new GridLayoutManager(this,2);
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+            cells =4;
+        }
+        mLayoutManager = new GridLayoutManager(this,cells);
         recyclerView.setLayoutManager(mLayoutManager);
         mLayoutManager.setAutoMeasureEnabled(true);
         movies = new ArrayList<Movie>();
