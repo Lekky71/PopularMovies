@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_height="140dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:id="@+id/video_linearlayout_child"
+    android:layout_height="130dp">
+
+    <ImageView
+        android:id="@+id/play_trailer_button"
+        android:layout_width="140dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="30dp"
+        android:paddingStart="30dp"
+        android:scaleType="fitXY"
+        android:tint="#000000"
+        android:src="@android:drawable/ic_media_play" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:padding="50dp"
+        android:text="this is me"
+        android:textSize="30sp"
+        android:layout_height="match_parent"
+        android:id="@+id/trailer_number"/>
+
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
+        android:layout_below="@id/video_linearlayout_child"/>
+</RelativeLayout>

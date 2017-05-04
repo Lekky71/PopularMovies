@@ -23,7 +23,6 @@ public class MovieView extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
             theImage.setMinimumWidth(300);
-
         }
     }
 }

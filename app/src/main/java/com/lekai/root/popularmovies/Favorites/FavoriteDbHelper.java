@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.lekai.root.popularmovies.Favorites.FavoritesContract.FavoritesEntry;
 
-import static com.lekai.root.popularmovies.Favorites.FavoritesContract.FavoritesEntry.*;
-
 /**
  * Created by root on 5/3/17.
  */
@@ -24,19 +22,20 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String CREATE_TABLE = "CREATE TABLE "+ TABLE_NAME+ " ("+
+        final String CREATE_TABLE = "CREATE TABLE "+ FavoritesEntry.TABLE_NAME + " ("+
                 FavoritesEntry._ID + " INTEGER PRIMARY KEY, "+
                 FavoritesEntry.MOVIE_TITLE + " TEXT NOT NULL, "+
                 FavoritesEntry.COLUMN_MOVIE_ID + " TEXT NOT NULL, "+
                 FavoritesEntry.MOVIE_RATING + " TEXT NOT NULL, "+
                 FavoritesEntry.MOVIE_DATE + " TEXT NOT NULL, "+
-                FavoritesEntry.MOVIE_OVERVIEW+ "TEXT NOT NULL);";
+                FavoritesEntry.MOVIE_OVERVIEW+ " TEXT NOT NULL, "+
+                FavoritesEntry.MOVIE_IMAGEPATH + " TEXT NOT NULL);";
         db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP IF TABLE EXISTS "+FavoritesEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+FavoritesEntry.TABLE_NAME);
         onCreate(db);
     }
 }

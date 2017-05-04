@@ -18,6 +18,11 @@
         </activity>
         <activity android:name=".MovieActivity"
             android:parentActivityName=".MainActivity"></activity>
+
+        <provider
+            android:name="com.lekai.root.popularmovies.Favorites.FavoritesContentProvider"
+            android:authorities="com.lekai.root.popularmovies"
+            android:exported="false"/>
     </application>
 
 </manifest>

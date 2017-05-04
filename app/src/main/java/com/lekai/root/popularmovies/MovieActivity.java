@@ -1,21 +1,25 @@
 package com.lekai.root.popularmovies;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lekai.root.popularmovies.Favorites.FavoritesContract;
 import com.lekai.root.popularmovies.MovieReviews.Review;
 import com.lekai.root.popularmovies.MovieReviews.ReviewAdapter;
 import com.lekai.root.popularmovies.MovieReviews.ReviewInfo;
@@ -51,8 +55,15 @@ public class MovieActivity extends AppCompatActivity  {
     Adapter reviewAdapter;
     RecyclerView reviewRecyclerView;
     LinearLayoutManager reviewlinearLayoutManager;
-    Toolbar toolbar;
     ViewPager viewPager;
+    Button addToFavorites;
+    String movieName  ;
+    String posterImage ;
+    String plot ;
+    String ratings ;
+    String releaseDate ;
+    String movieId ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,17 +74,15 @@ public class MovieActivity extends AppCompatActivity  {
         overview =(TextView) findViewById(R.id.movie_plot);
         userRating = (TextView) findViewById(R.id.movie_rating);
         date = (TextView) findViewById(R.id.movie_date);
-        toolbar = (Toolbar) findViewById(R.id.tabLayout);
-
+        addToFavorites = (Button) findViewById(R.id.add_favorite_button);
         viewPager = (ViewPager) findViewById(R.id.pager);
         Intent receiveIntent = getIntent();
-        String movieName = receiveIntent.getStringExtra("title");
-        String posterImage = receiveIntent.getStringExtra("imagePath");
-        String plot = receiveIntent.getStringExtra("plot");
-        String  ratings = receiveIntent.getStringExtra("ratings");
-        String  releaseDate = receiveIntent.getStringExtra("releaseDate");
-        String movieId = receiveIntent.getStringExtra("movie_id");
-        Boolean hasVideo = receiveIntent.getBooleanExtra("video_boolean",true);
+        movieName = receiveIntent.getStringExtra("title");
+        posterImage = receiveIntent.getStringExtra("imagePath");
+        plot = receiveIntent.getStringExtra("plot");
+        ratings = receiveIntent.getStringExtra("ratings");
+        releaseDate = receiveIntent.getStringExtra("releaseDate");
+        movieId = receiveIntent.getStringExtra("movie_id");
         videoRecyclerView = (RecyclerView) findViewById(R.id.trailers_recyclerview);
         videoRecyclerView.setHasFixedSize(true);
         videolayoutManager = new LinearLayoutManager(this);
@@ -99,6 +108,7 @@ public class MovieActivity extends AppCompatActivity  {
         title.setText(movieName);
         Picasso.with(this).load(posterImage)
                 .resize(400,400)
+                .placeholder(R.color.colorBlack)
                 .into(image);
         overview.setText("About this movie : "+plot);
         userRating.setText(ratings+"/10");
@@ -107,7 +117,22 @@ public class MovieActivity extends AppCompatActivity  {
         actionBar.setTitle("Movie Detail");
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2c3539")));
 
-
+        addToFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(FavoritesContract.FavoritesEntry.MOVIE_TITLE,movieName);
+                contentValues.put(FavoritesContract.FavoritesEntry.MOVIE_RATING,ratings);
+                contentValues.put(FavoritesContract.FavoritesEntry.MOVIE_DATE,releaseDate);
+                contentValues.put(FavoritesContract.FavoritesEntry.COLUMN_MOVIE_ID,movieId);
+                contentValues.put(FavoritesContract.FavoritesEntry.MOVIE_IMAGEPATH,posterImage);
+                contentValues.put(FavoritesContract.FavoritesEntry.MOVIE_OVERVIEW,plot);
+                Uri uri = getContentResolver().insert(FavoritesContract.FavoritesEntry.CONTENT_URI,contentValues);
+                if(uri !=null){
+                    Toast.makeText(getBaseContext(),"Added to Favorites",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -179,5 +204,4 @@ public class MovieActivity extends AppCompatActivity  {
         outState.putParcelableArrayList("videos",myVideos);
         outState.putParcelableArrayList("reviews",myReviews);
     }
-
 }
